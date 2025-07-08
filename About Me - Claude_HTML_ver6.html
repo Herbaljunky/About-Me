@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brandon - Psychedelic Mental Health Advocate</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Space+Grotesk:wght@300;400;500;700&display=swap');
+        
+        @media print {
+            body { margin: 0; background: white !important; }
+            .flier { box-shadow: none; margin: 0; }
+            .animated-bg { animation: none !important; }
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #ffeaa7, #fd79a8);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            min-height: 100vh;
+            padding: 8px;
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .flier {
+            max-width: 8.5in;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            backdrop-filter: blur(10px);
+            position: relative;
+        }
+        
+        .flier::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 20%, rgba(255, 0, 150, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(0, 255, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 60%, rgba(255, 255, 0, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            color: white;
+            padding: 15px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: repeating-conic-gradient(
+                from 0deg at 50% 50%,
+                transparent 0deg,
+                rgba(255,255,255,0.1) 10deg,
+                transparent 20deg
+            );
+            animation: rotate 20s linear infinite;
+        }
+        
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .name {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.8rem;
+            font-weight: 900;
+            margin-bottom: 6px;
+            text-shadow: 0 0 20px rgba(255,255,255,0.5);
+            letter-spacing: 2px;
+        }
+        
+        .title {
+            font-size: 0.95rem;
+            margin-bottom: 4px;
+            font-weight: 500;
+        }
+        
+        .subtitle {
+            font-size: 0.8rem;
+            opacity: 0.9;
+            margin-bottom: 6px;
+        }
+        
+        .location {
+            font-size: 0.7rem;
+            opacity: 0.85;
+            font-style: italic;
+        }
+        
+        .mission-banner {
+            background: linear-gradient(90deg, #11998e, #38ef7d);
+            color: white;
+            padding: 8px 12px;
+            text-align: center;
+            font-weight: 700;
+            font-size: 0.85rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+            position: relative;
+        }
+        
+        .mission-banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent 40%, rgba(255,255,255,0.2) 50%, transparent 60%);
+            animation: shimmer 3s ease-in-out infinite;
+        }
+        
+        @keyframes shimmer {
+            0%, 100% { transform: translateX(-100%); }
+            50% { transform: translateX(100%); }
+        }
+        
+        .content {
+            padding: 10px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .section {
+            margin-bottom: 8px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 12px;
+            padding: 8px;
+            border: 2px solid transparent;
+            background-clip: padding-box;
+            position: relative;
+        }
+        
+        .section::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #ffeaa7, #fd79a8);
+            border-radius: 12px;
+            z-index: -1;
+            animation: borderGlow 4s ease-in-out infinite alternate;
+        }
+        
+        @keyframes borderGlow {
+            0% { opacity: 0.6; filter: hue-rotate(0deg); }
+            100% { opacity: 1; filter: hue-rotate(360deg); }
+        }
+        
+        .section-title {
+            font-family: 'Orbitron', monospace;
+            color: #2c3e50;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .section-content {
+            font-size: 0.75rem;
+            line-height: 1.3;
+            color: #2c3e50;
+        }
+        
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            margin: 6px 0;
+        }
+        
+        .info-card {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+            padding: 6px;
+            border-radius: 8px;
+            border: 1px solid rgba(102, 126, 234, 0.3);
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .info-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        }
+        
+        .creative-card {
+            background: linear-gradient(135deg, rgba(200, 80, 80, 0.2), rgba(220, 90, 140, 0.2));
+            padding: 6px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 107, 107, 0.3);
+            position: relative;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+        
+        .creative-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(255, 107, 107, 0.4);
+            border-color: rgba(255, 107, 107, 0.6);
+        }
+        
+        .play-button {
+            position: absolute;
+            top: 4px;
+            right: 4px;
+            width: 16px;
+            height: 16px;
+            background: linear-gradient(45deg, #ff6b6b, #fd79a8);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 8px;
+            box-shadow: 0 2px 8px rgba(255, 107, 107, 0.4);
+            animation: playPulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes playPulse {
+            0%, 100% { transform: scale(1); box-shadow: 0 2px 8px rgba(255, 107, 107, 0.4); }
+            50% { transform: scale(1.1); box-shadow: 0 4px 12px rgba(255, 107, 107, 0.6); }
+        }
+        
+        .play-icon {
+            width: 0;
+            height: 0;
+            border-left: 5px solid white;
+            border-top: 3px solid transparent;
+            border-bottom: 3px solid transparent;
+            margin-left: 1px;
+        }
+        
+        .card-title {
+            font-weight: 700;
+            color: #667eea;
+            margin-bottom: 3px;
+            font-size: 0.75rem;
+        }
+        
+        .card-text {
+            font-size: 0.7rem;
+            color: #555;
+            line-height: 1.2;
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(200, 80, 80, 0.25), rgba(220, 90, 140, 0.25));
+            padding: 8px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 107, 107, 0.3);
+            margin: 6px 0;
+            font-size: 0.75rem;
+        }
+        
+        .psychedelic-link {
+            color: #4a4a4a;
+            text-decoration: none;
+            font-weight: 700;
+            background: linear-gradient(45deg, #4a5ba2, #5a3b7a, #cc4b4b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .rainbow-text {
+            background: linear-gradient(45deg, #cc4b4b, #3a9c9c, #357a9a, #7aa67a, #ccaa55, #ca5985);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 700;
+        }
+        
+        .brain-emoji {
+            font-size: 1.1em;
+            animation: pulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        
+        .footer {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 8px;
+            text-align: center;
+            font-style: italic;
+            font-size: 0.8rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="flier">
+        <div class="header">
+            <div class="header-content">
+                <h1 class="name">BRANDON</h1>
+                <div class="title">🧠 Psychology Student & Future Licensed Family Therapist 🧠</div>
+                <div class="subtitle">Pharmacy Assistant • Lab Assistant • Co-Parent • Lifelong Learner</div>
+                <div class="location">
+                    📍 Kansas City, MO → Quilcene, WA (2019) • Journey to find love & new purpose
+                </div>
+            </div>
+        </div>
+        
+        <div class="mission-banner">
+            <span class="brain-emoji">🌈</span> MISSION: Breaking generational trauma through holistic family healing <span class="brain-emoji">🌈</span>
+        </div>
+        
+        <div class="content">
+            <div class="section">
+                <h2 class="section-title">🎓 Academic Excellence & Tech Background</h2>
+                <div class="section-content">
+                    <strong>Current Quarter:</strong> Child Development (therapeutic foundation) & HR Management (creating supportive environments) • <strong>97.5% on-time assignment rate</strong> • Recent 4.0 in Intro to Computer Science
+                </div>
+                <div class="highlight-box">
+                    <strong>🖥️ Tech Pioneer:</strong> Ran 8-node ISP at age 12, creating early social media features (user profiles, photo uploads, bios) - predating MySpace/Facebook! Strong computer insight fuels analytical approach to psychology.
+                </div>
+                <div class="section-content">
+                    <strong>Final Courses:</strong> Anthropology (wife's influence) & Statistics → <strong>Graduating Fall</strong> → Bachelor's Behavioral Health at Peninsula College
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">🌱 Holistic Background & Vision</h2>
+                <div class="two-col">
+                    <div class="info-card">
+                        <div class="card-title">👨‍👩‍👧‍👦 Family</div>
+                        <div class="card-text">Father: "papa" (3) & "dad" (22) • Husband to brilliant wife (2 BAs + Master's)</div>
+                    </div>
+                    <div class="info-card">
+                        <div class="card-title">💊 Healthcare</div>
+                        <div class="card-text">Dual: Pharmacy Assistant & Lab Assistant</div>
+                    </div>
+                    <a href="https://shorturl.at/RGnyY" target="_blank" class="creative-card">
+                        <div class="play-button">
+                            <div class="play-icon"></div>
+                        </div>
+                        <div class="card-title">🎵 Creative</div>
+                        <div class="card-text">Multi-instrumentalist • SoundCloud 1997-2001</div>
+                    </a>
+                    <div class="info-card">
+                        <div class="card-title">💪 Resilience</div>
+                        <div class="card-text">Left school at 13 to care for father with MS</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">🎯 Student Strengths & Learning Needs</h2>
+                <div class="section-content">
+                    <strong>What I Do Well:</strong> <span class="rainbow-text">Engaging in crucial conversations</span>, asking hard questions, maintaining discussion standards. Natural conflict resolution skills with extensive self-study in emotional intelligence.
+                </div>
+                <div class="highlight-box">
+                    <strong>🌟 Learning Support Needs:</strong> Mutual & mindful listening • Forgiveness • Words of affirmation • Emoji encouragement 😊 • Sense of humor acceptance • Balanced positivity with self-advocacy reality
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">🏖️ Future Dreams & Philosophy</h2>
+                <div class="highlight-box">
+                    <strong>🌴 Ultimate Goal:</strong> <span class="rainbow-text">No boss</span> • Working remotely from Costa Rica on beach with family • Remote visa lifestyle (after Master's degree completion)
+                </div>
+                <div class="section-content">
+                    <strong>Therapeutic Approach:</strong> Integrating traditional psychology with lived trauma experience, creative expression, and holistic healing. Building comprehensive toolkit through diverse academic, professional, and personal experiences.
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            "A future therapist, tech innovator, creative soul, and resilient human committed to healing families and breaking generational cycles 🌈✨"
+        </div>
+    </div>
+</body>
+</html>
